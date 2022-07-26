@@ -38,15 +38,15 @@ async function BbBot(cpfList: Array<string>) {
   const page = await browser.newPage();
   // entra na url
   await page.setViewport({ width: 1366, height: 768});
-  await page.goto("https://portalcredito.bb.com.br/portal/autenticar");
+  await page.goto(process.env.URL);
   // aguarda aparecer a caixa de login
   await page.waitForSelector(".col-input");
   // tira print
   // printScreen();
   // coloca a senha no input de id="idChave"
-  await page.type("#idChaveJ", "JF755929");
+  await page.type("#idChaveJ", process.env.LOGIN);
   // coloca a senha no input onde name="password"
-  await page.type("[name=password]", "Qesh2022");
+  await page.type("[name=password]", process.env.SENHA);
   await page.click("[type=submit]");
   // aguarda a caixa de dialogo aparecer
   await page.waitForTimeout(2000); //aguarda 0.2 segundo
